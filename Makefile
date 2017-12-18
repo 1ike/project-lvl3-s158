@@ -8,7 +8,10 @@ fix:
 	composer run-script phpcbf -- --standard=PSR2 app database resources routes storage tests
 
 test:
-	phpunit
+	composer run-script phpunit
 
 run:
 	php -S localhost:80 -t public
+
+logs:
+	tail -f storage/logs/lumen.log
