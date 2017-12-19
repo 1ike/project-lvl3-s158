@@ -54,7 +54,7 @@ class DomainController extends Controller
         }
 
         $title = "Domain {$url} - PageSpeed";
-        $time = time();
+        $time = date('Y-m-d h:i', time());
         $id = DB::table('domains')->insertGetId([
             'name' => $url,
             'created_at' => $time,

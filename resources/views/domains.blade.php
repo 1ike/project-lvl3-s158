@@ -30,8 +30,8 @@
             <tr>
                 <th scope="row">{{ $domain->id }}</th>
                 <td>{{ $domain->name }}</td>
-                <td>{{ date('Y-m-d H:i e', $domain->created_at) }}</td>
-                <td>{{ date('Y-m-d H:i e', $domain->updated_at) }}</td>
+                <td>{{ $domain->created_at }}</td>
+                <td>{{ $domain->updated_at }}</td>
             </tr>
             @endforeach
         </tbody>
