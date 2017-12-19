@@ -30,7 +30,8 @@
     },
     "scripts": {
         "post-root-package-install": [
-            "php -r \"copy('.env.example', '.env');\""
+            "php -r \"copy('.env.example', '.env');\"",
+            "vendor/bin/heroku-php-apache2 public/"
         ],
         "phpcs": "phpcs",
         "phpcbf": "phpcbf",
@@ -39,6 +40,3 @@
     "minimum-stability": "dev",
     "prefer-stable": true
 }
-
-
-

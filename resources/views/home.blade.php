@@ -1,12 +1,31 @@
-@extends('layout')
+@extends('layouts/layout')
+
+@section('title', $title)
+
+@section('navbar')
+    @include('layouts/navbar', ['routeName' => $routeName])
+@endsection
 
 @section('content')
 
-        <h1>PageSpeed optimization</h1>
+<div class="jumbotron jumbotron--home">
+    <h1 class="display-3">Check your webpage!</h1>
+    <p class="lead">
+        Enter webpage URL for testing and get recomendations about webpage speed optimization.
+    </p>
 
-        @include('form', ['url' => $url])
+    <form action="/domains"  method="post" class="search form-inline">
 
-        {{ $html }}
+        <input class="form-control" id="url" name="url" value="{{ $url }}" placeholder="Enter webpage URL" required="" type="text">
 
+        <input class="btn btn-primary" value="Test"  type="submit">
+    </form>
+    @if ($errors)
+    @foreach ($errors as $error)
+    <p class="alert alert-danger" role="alert">{{ $error }}</p>
+
+    @endforeach
+    @endif
+</div>
 
 @endsection

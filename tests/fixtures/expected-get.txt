@@ -9,51 +9,51 @@
     <title>PageSpeed - optimization guide (learning project)</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Pagespeed</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown link
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-        </ul>
-    </div>
-    </nav>
 
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="http://localhost">Pagespeed</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                    <a class="nav-link" href="http://localhost">Home <span class="sr-only">(current)</span></a>
+                </li>
+                                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost/domains">Domains</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown link
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
         
-        <h1>PageSpeed optimization</h1>
+<div class="jumbotron jumbotron--home">
+    <h1 class="display-3">Check your webpage!</h1>
+    <p class="lead">
+        Enter webpage URL for testing and get recomendations about webpage speed optimization.
+    </p>
 
-        <form class="search form-inline" method="post">
+    <form action="/domains"  method="post" class="search form-inline">
 
-    <input class="form-control" id="url" name="url" value="" placeholder="Enter webpage URL" required="" type="text">
+        <input class="form-control" id="url" name="url" value="" placeholder="Enter webpage URL" required="" type="text">
 
-    <input class="btn btn-primary" value="Test"  type="submit">
-<!-- <button type="submit" class="btn btn-primary">Confirm identity</button> -->
-</form>
-
-
-        
-
+        <input class="btn btn-primary" value="Test"  type="submit">
+    </form>
+    </div>
 
     </div>
 

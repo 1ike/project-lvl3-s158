@@ -11,7 +11,20 @@
 |
 */
 
-$router->get('/', function () {
-    return view('home', ['url' => '', 'html' => '']);
-});
-$router->post('/', ['uses' => 'HomeController@showResult', 'as' => 'home']);
+
+$router->get('/', ['as' => 'home', function () {
+    $title = 'PageSpeed - optimization guide (learning project)';
+    $routeName = app('request')->route()[1]['as'];
+    return view('home', [
+        'title' => $title,
+        'routeName' => $routeName,
+        'url' => '',
+        'errors' => '',
+    ]);
+}]);
+
+$router->get('/domains', ['as' => 'domains', 'uses' => 'DomainController@showAll']);
+
+$router->get('/domains/{id}', ['as' => 'domain','uses' => 'DomainController@show']);
+
+$router->post('/domains', ['uses' => 'DomainController@create']);
