@@ -21,6 +21,8 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">URL</th>
+                <th scope="col">created_at</th>
+                <th scope="col">updated_at</th>
             </tr>
         </thead>
         <tbody class="table-striped">
@@ -28,6 +30,8 @@
             <tr>
                 <th scope="row">{{ $domain->id }}</th>
                 <td>{{ $domain->name }}</td>
+                <td>{{ date('Y-m-d H:i e', $domain->created_at) }}</td>
+                <td>{{ date('Y-m-d H:i e', $domain->updated_at) }}</td>
             </tr>
             @endforeach
         </tbody>

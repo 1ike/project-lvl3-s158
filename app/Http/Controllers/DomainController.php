@@ -54,7 +54,12 @@ class DomainController extends Controller
         }
 
         $title = "Domain {$url} - PageSpeed";
-        $id = DB::table('domains')->insertGetId(['name' => $url]);
+        $time = time();
+        $id = DB::table('domains')->insertGetId([
+            'name' => $url,
+            'created_at' => $time,
+            'updated_at' => $time,
+        ]);
 
         return redirect()->route('domain', ['id' => $id]);
     }
