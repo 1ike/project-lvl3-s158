@@ -8,10 +8,11 @@
 
 @section('content')
 
-@if (empty($domains))
+@if ($domains->isEmpty())
     <h1>There no domains found.</h1>
 @else
     @if (count($domains) == 1)
+
     <h1>Domain</h1>
     @else
     <h1>Domains</h1>
