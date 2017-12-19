@@ -8,7 +8,8 @@
 
 @section('content')
 
-get_loaded_extensions();
+{{var_dump(get_loaded_extensions())}}
+
 
 <div class="jumbotron jumbotron--home">
     <h1 class="display-3">Check your webpage!</h1>
