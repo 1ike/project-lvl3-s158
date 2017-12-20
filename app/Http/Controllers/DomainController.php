@@ -18,7 +18,8 @@ class DomainController extends Controller
         return view('domains', [
             'title' => $title,
             'routeName' => '',
-            'domains' => $domains
+            'domains' => $domains,
+            'hasPagination' => false
             ]);
         }
 
@@ -31,7 +32,8 @@ class DomainController extends Controller
         return view('domains', [
             'title' => $title,
             'routeName' => $routeName,
-            'domains' => $domains
+            'domains' => $domains,
+            'hasPagination' => true
         ]);
     }
 

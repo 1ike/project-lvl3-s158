@@ -38,7 +38,7 @@
                 </tr>
             </tbody>
         </table>
-        @if (count($domains) > 1 )
+        @if ($hasPagination)
         <nav class="pagination-nav" aria-label="Page navigation">
             {{$domains}}
         </nav>
