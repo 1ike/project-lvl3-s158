@@ -14,7 +14,7 @@
         Enter webpage URL for testing and get recomendations about webpage speed optimization.
     </p>
 
-    <form action="/domains"  method="post" class="search form-inline">
+    <form action="{{ route('domains') }}"  method="post" class="search form-inline">
 
         <input class="form-control" id="url" name="url" value="{{ $url }}" placeholder="Enter webpage URL" required="" type="text">
 
