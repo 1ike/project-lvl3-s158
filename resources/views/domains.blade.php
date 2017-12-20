@@ -13,7 +13,7 @@
 @else
     <h1>{{trans_choice('plures.Domains', count($domains))}}</h1>
 
-    <div class="domains-list">
+    <div class="d-inline-block">
         <table class="table table-responsive">
             <thead>
                 <tr>
@@ -39,7 +39,7 @@
             </tbody>
         </table>
         @if ($hasPagination)
-        <nav class="pagination-nav" aria-label="Page navigation">
+        <nav class="d-flex justify-content-center" aria-label="Page navigation">
             {{$domains}}
         </nav>
         @endif

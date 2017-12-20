@@ -2,24 +2,3 @@ h1 {
     font-size: 24px;
     margin: 30px 10px;
 }
-
-.search {
-    margin-top: 50px;
-}
-
-.search input {
-    margin: 10px;
-}
-
-.jumbotron--home {
-    margin-top: 50px;
-}
-
-.domains-list {
-    display: inline-block;
-}
-
-.pagination-nav .pagination {
-    display: flex;
-    justify-content: center;
-}
