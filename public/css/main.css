@@ -14,3 +14,7 @@ h1 {
 .jumbotron--home {
     margin-top: 50px;
 }
+
+.domains-list {
+    display: inline-block;
+}

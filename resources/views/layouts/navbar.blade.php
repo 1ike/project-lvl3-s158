@@ -13,7 +13,7 @@
                 <li class="nav-item{{ $isDomains ? ' active' : '' }}">
                     <a class="nav-link" href="{{ route('domains') }}">Domains{!! $isDomains ? ' <span class="sr-only">(current)</span>' : '' !!}</a>
                 </li>
-                <li class="nav-item">
+<!--                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
                 <li class="nav-item dropdown">
@@ -25,7 +25,7 @@
                         <a class="dropdown-item" href="#">Another action</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>
