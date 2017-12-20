@@ -18,3 +18,8 @@ h1 {
 .domains-list {
     display: inline-block;
 }
+
+.pagination-nav .pagination {
+    display: flex;
+    justify-content: center;
+}

@@ -26,7 +26,7 @@ class DomainController extends Controller
     {
         $title = 'Domains - PageSpeed';
         $routeName = app('request')->route()[1]['as'];
-        $domains = DB::table('domains')->get();
+        $domains = DB::table('domains')->paginate(5);
 
         return view('domains', [
             'title' => $title,
