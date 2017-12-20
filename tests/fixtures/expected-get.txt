@@ -23,7 +23,7 @@
                                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost/domains">Domains</a>
                 </li>
-                <li class="nav-item">
+<!--                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
                 <li class="nav-item dropdown">
@@ -35,7 +35,7 @@
                         <a class="dropdown-item" href="#">Another action</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>
@@ -47,7 +47,7 @@
         Enter webpage URL for testing and get recomendations about webpage speed optimization.
     </p>
 
-    <form action="/domains"  method="post" class="search form-inline">
+    <form action="http://localhost/domains"  method="post" class="search form-inline">
 
         <input class="form-control" id="url" name="url" value="" placeholder="Enter webpage URL" required="" type="text">
 
