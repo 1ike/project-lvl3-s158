@@ -6,6 +6,10 @@ install:
   - composer self-update
   - make install
 
+before_script:
+  - sqlite3 database/database.sqlite
+  - php artisan migrate
+
 script: make test
 
 after_script:
