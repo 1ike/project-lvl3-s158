@@ -33,7 +33,7 @@
                     <td>{{ $domain->created_at }}</td>
                     <td>{{ $domain->updated_at }}</td>
                     <td>{{ $domain->code }}</td>
-                    <td>{{ $domain->content_length !== '-1' ? $domain->content_length : 'has not header' }}</td>
+                    <td>{{ (int) $domain->content_length !== -1 ? $domain->content_length : 'has not header' }}</td>
                 </tr>
                 @endforeach
             </tbody>
