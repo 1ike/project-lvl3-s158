@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use DB;
 
-// use Illuminate\Http\Response;
+use GuzzleHttp\Client;
 
 class DomainController extends Controller
 {
@@ -37,7 +37,7 @@ class DomainController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create(Request $request, Client $client)
     {
 
         $url = $request->input('url');
@@ -55,29 +55,25 @@ class DomainController extends Controller
             ]);
         }
 
+        $res = $client->request('GET', $url);
+        $statusCode = $res->getStatusCode();
+        $hasContentLength = $res->hasHeader('Content-Length');
+        $contentLength = $hasContentLength ?
+            $res->getHeader('Content-Length')[0] : -1;
+        $body = $res->getBody();
+
         $title = "Domain {$url} - PageSpeed";
         $time = date('Y-m-d h:i', time());
         $id = DB::table('domains')->insertGetId([
             'name' => $url,
             'created_at' => $time,
             'updated_at' => $time,
+            'code' => $statusCode,
+            'content_length' => $contentLength,
+            'body' => $body,
         ]);
 
         return redirect()->route('domain', ['id' => $id]);
     }
 
-
-/*     public function showResult(Request $request, \GuzzleHttp\Client $client)
-    {
-        $url = $request->input('url');
-
-        // $client = new \GuzzleHttp\Client(['verify' => false]);
-        $request1 = new \GuzzleHttp\Psr7\Request('GET', $url);
-        $promise = $client->sendAsync($request1)->then(function ($response) {
-             return $response->getBody();
-        });
-        $html = $promise->wait();
-
-        return view('home', ['url' => $url, 'html' => $html]);
-    } */
 }

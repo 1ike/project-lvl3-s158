@@ -21,6 +21,8 @@
                     <th scope="col">name</th>
                     <th scope="col">created_at</th>
                     <th scope="col">updated_at</th>
+                    <th scope="col">status code</th>
+                    <th scope="col">content-length</th>
                 </tr>
             </thead>
             <tbody class="table-striped">
@@ -30,12 +32,10 @@
                     <td><a href="{{ route('domain', ['id' => $domain->id]) }}">{{ $domain->name }}</a></td>
                     <td>{{ $domain->created_at }}</td>
                     <td>{{ $domain->updated_at }}</td>
+                    <td>{{ $domain->code }}</td>
+                    <td>{{ $domain->content_length !== '-1' ? $domain->content_length : 'has not header' }}</td>
                 </tr>
                 @endforeach
-                <tr>
-                    <td colspan="4">
-                    </td>
-                </tr>
             </tbody>
         </table>
         @if ($hasPagination)

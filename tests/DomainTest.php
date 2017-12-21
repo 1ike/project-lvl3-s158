@@ -3,25 +3,24 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 // use Laravel\Lumen\Testing\DatabaseTransactions;
 
-/* use GuzzleHttp\Client;
+use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException; */
+// use GuzzleHttp\Psr7\Request;
+// use GuzzleHttp\Exception\RequestException;
 
-// use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DomainController;
 
 class DomainTest extends TestCase
 {
     use DatabaseMigrations;
 
-/*     public function setUp()
+    public function setUp()
     {
         parent::setUp();
-        $this->expectedGET = file_get_contents('tests/fixtures/expected-get.txt');
-        // $this->expectedPOST = file_get_contents('tests/fixtures/expected-post.txt');
-    } */
+        $this->expectedPOST = file_get_contents('tests/fixtures/expected-post.txt');
+    }
 
 
     public function testAddDomain()
@@ -42,29 +41,38 @@ class DomainTest extends TestCase
 
         $this->notseeInDatabase('domains', ['name' => $url]);
         $this->assertResponseOk();
-
     }
 
-/*     public function testPOST()
+    public function testGuzzle()
     {
-        $this->post('/', ['url' => 'ya.ru']);
+        $url = 'http://ya.ru';
 
-        $req = app('request');
+        $request = app('request');
+        $request->replace(['url' => $url]);
 
-        $html = file_get_contents('tests/fixtures/expected-html.txt');
+        $status_expected = 200;
+        $length_expected = 10547;
+        $body_expected = file_get_contents('tests/fixtures/expected-html.txt');
+
         $mock = new MockHandler([
-            new Response(200, [], $html),
+            new Response(
+                $status_expected,
+                 ['Content-Length' => $length_expected],
+                  $body_expected)
         ]);
 
         $handler = HandlerStack::create($mock);
-        $client = new \GuzzleHttp\Client(['handler' => $handler]);
+        $client = new Client(['handler' => $handler]);
 
+        $res = (new DomainController)->create($request, $client);
 
-        // var_dump();
+        $status = DB::table('domains')->value('code');
+        $length = DB::table('domains')->value('content_length');
+        $body = DB::table('domains')->value('body');
 
-        $this->assertEquals(
-            $this->expectedPOST,
-            (new HomeController)->showResult($req, $client)->render()
-        );
-    } */
+        $this->assertEquals($status_expected, $status);
+        $this->assertEquals($length_expected, $length);
+        $this->assertEquals($body_expected, $body);
+    }
+
 }

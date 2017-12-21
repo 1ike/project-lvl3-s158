@@ -14,7 +14,8 @@
         "phpunit/phpunit": "*",
         "mockery/mockery": "~0.9",
         "squizlabs/php_codesniffer":"*",
-        "codeclimate/php-test-reporter": "dev-master"
+        "codeclimate/php-test-reporter": "dev-master",
+        "doctrine/dbal": "^2.6"
 
     },
     "autoload": {
