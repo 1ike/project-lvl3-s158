@@ -53,12 +53,15 @@ class DomainTest extends TestCase
         $status_expected = 200;
         $length_expected = 10547;
         $body_expected = file_get_contents('tests/fixtures/expected-html.txt');
+        $keywords_expected = 'la-la-la';
+        $content_expected = 'has not such meta';
 
         $mock = new MockHandler([
             new Response(
                 $status_expected,
-                 ['Content-Length' => $length_expected],
-                  $body_expected)
+                ['Content-Length' => $length_expected],
+                $body_expected
+            )
         ]);
 
         $handler = HandlerStack::create($mock);
@@ -69,10 +72,14 @@ class DomainTest extends TestCase
         $status = DB::table('domains')->value('code');
         $length = DB::table('domains')->value('content_length');
         $body = DB::table('domains')->value('body');
+        $keywords = DB::table('domains')->value('meta_keywords');
+        $content = DB::table('domains')->value('meta_content');
 
         $this->assertEquals($status_expected, $status);
         $this->assertEquals($length_expected, $length);
         $this->assertEquals($body_expected, $body);
+        $this->assertEquals($keywords_expected, $keywords);
+        $this->assertEquals($content_expected, $content);
     }
 
 }

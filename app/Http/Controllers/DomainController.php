@@ -7,6 +7,7 @@ use Validator;
 use DB;
 
 use GuzzleHttp\Client;
+use DiDom\Document;
 
 class DomainController extends Controller
 {
@@ -61,7 +62,9 @@ class DomainController extends Controller
         $contentLength = $hasContentLength ?
             $res->getHeader('Content-Length')[0] : -1;
         $body = $res->getBody();
-
+        $document = new Document((string) $body);
+        $keywords = $this->extractMetaAttr($document, 'keywords');
+        $content = $this->extractMetaAttr($document, 'content');
         $title = "Domain {$url} - PageSpeed";
         $time = date('Y-m-d h:i', time());
         $id = DB::table('domains')->insertGetId([
@@ -71,9 +74,25 @@ class DomainController extends Controller
             'code' => $statusCode,
             'content_length' => $contentLength,
             'body' => $body,
+            'meta_keywords' => $keywords,
+            'meta_content' => $content,
         ]);
 
         return redirect()->route('domain', ['id' => $id]);
     }
 
+    private function extractMetaAttr($document, $attr)
+    {
+        if (!$document->has("meta[name=$attr]")) {
+            return 'has not such meta';
+        }
+
+        $element = $document->find("meta[name=$attr]")[0];
+
+        if ($element->hasAttribute("$attr")) {
+            return 'meta has not such attribute';
+        }
+
+        return $element->content;
+    }
 }

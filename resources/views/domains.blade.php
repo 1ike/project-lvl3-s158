@@ -23,6 +23,10 @@
                     <th scope="col">updated_at</th>
                     <th scope="col">status code</th>
                     <th scope="col">content-length</th>
+                    @if (!$hasPagination)
+                    <th scope="col">meta[keywords]</th>
+                    <th scope="col">meta[content]</th>
+                    @endif
                 </tr>
             </thead>
             <tbody class="table-striped">
@@ -34,6 +38,10 @@
                     <td>{{ $domain->updated_at }}</td>
                     <td>{{ $domain->code }}</td>
                     <td>{{ (int) $domain->content_length !== -1 ? $domain->content_length : 'has not header' }}</td>
+                    @if (!$hasPagination)
+                    <td>{{ $domain->meta_keywords }}</td>
+                    <td>{{ $domain->meta_content }}</td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>
